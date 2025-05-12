@@ -1,0 +1,16 @@
+.contenedorCard{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.card{
+    width: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.card:hover{
+    transform: translateY(-5px);
+}
