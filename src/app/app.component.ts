@@ -5,13 +5,24 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 //Common MOdule
 import { CommonModule } from '@angular/common';
+
+//Importacion de LA BASE DE DATOS de airtable
+import { BaseDatosAirtableService } from './base-datos-airtable.service';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,MatCardModule, CommonModule,MatButtonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+//
 export class AppComponent {
+
+  apiKey="";
+  idBaseDatos="";
+  nombreBaseDatos="Productos"
+
 
   title = 'componentes';
 
