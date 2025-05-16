@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 //IMPORTAR AIRTABLE
 import Airtable from 'airtable';
+
 import { Observable, from } from 'rxjs';
 
 
@@ -9,24 +10,28 @@ import { Observable, from } from 'rxjs';
 })
 
 export class BaseDatosAirtableService{
-  apiKeToken="";
+  //Variables de conexion (credenciales)
+  apiKeyToken="";
   idBaseDatos="";
   nombreBaseDatos=""
 
   private base:any;
   constructor() { 
     Airtable.configure({
+      endpointUrl:"https://api.airtable.com",
       apiKey:"",
-      endpointUrl:"https://api.airtable.com'",
+      
+     //Id de la base de datos 
 
     });
     this.base=Airtable.base("");
   }
 
   //mETODO PARA OBTENER LOS PRODUCTOS DE LA BASE DE DATOS
-  obtenerDatos():Observable<any[]>{
-    return from(new Promise<any[]>((peticion,respuesta)=>{
-        const datosRegistro: any[]=[];
+  obtenerDatos():
+  Observable<any[]>{
+    return from(new Promise<any[]>((resolve,reject)=>{
+        const datosRegistro:any[]=[];
         this.base("Productos").select({
           view:'Grid view'
         }).eachPage(
@@ -43,11 +48,11 @@ export class BaseDatosAirtableService{
           });
           siguienteRegistros();
         },
-        function falla(error: any){
+        function falla(error:any){
           if(error){
-            respuesta(error);
+            reject(error);
           }else{
-            peticion(registros);
+            resolve(datosRegistro);
           }
         }
     );
