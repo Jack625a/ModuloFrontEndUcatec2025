@@ -13,7 +13,7 @@ export class BaseDatosAirtableService{
   //Variables de conexion (credenciales)
   apiKeyToken="";
   idBaseDatos="";
-  nombreBaseDatos=""
+  nombreBaseDatos="Productos"
 
   private base:any;
   constructor() { 
@@ -40,10 +40,10 @@ export class BaseDatosAirtableService{
           registros.forEach(registro =>{
               datosRegistro.push({
                 id: registro.id,
-                nombre: registro.get("Nombre"),
-                descripcion: registro.get("Descripcion"),
-                precio: registro.get("Precio"),
-                imagen:registro.get("Imagen")
+                nombre: registro.get("nombre"),
+                precio: registro.get("precio"),
+                descripcion: registro.get("descripcion"),
+                imagen:registro.get("imagen")
               });
           });
           siguienteRegistros();

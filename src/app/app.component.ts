@@ -19,14 +19,25 @@ import { BaseDatosAirtableService } from './base-datos-airtable.service';
 //
 export class AppComponent {
 
-  apiKey="";
-  idBaseDatos="";
-  nombreBaseDatos="Productos"
+  //Lista de producto de la base de datos
+  datos:any[]=[];
+  constructor(private airtableService: BaseDatosAirtableService){}
+
+  //Gestion de estados 
+  ngOnInit():void{
+    this.airtableService.obtenerDatos().subscribe(
+      (data)=>{
+        this.datos=data;
+      },(error)=>{
+        console.error("Error al obtener los datos ",error);
+      }
+    );
+  }
 
 
   title = 'componentes';
 
-  datos=[
+  /*datos=[
     {
       nombre:'Producto 1',
       descripcion:'Descripcion producto 1',
@@ -87,5 +98,5 @@ export class AppComponent {
       precio:3150,
       imagen:'https://www.tiendaamiga.com.bo/media/catalog/product/cache/deb88dadd509903c96aaa309d3e790dc/h/p/hp_15_ef2517la.jpg'
     },
-  ]
+  ]*/
 }
