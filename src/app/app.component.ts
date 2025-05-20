@@ -9,9 +9,14 @@ import { CommonModule } from '@angular/common';
 //Importacion de LA BASE DE DATOS de airtable
 import { BaseDatosAirtableService } from './base-datos-airtable.service';
 
+//Importar el inicio de sesion
+import { LoginComponent } from './login/login.component';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,MatCardModule, CommonModule,MatButtonModule],
+  imports: [RouterOutlet,MatCardModule, CommonModule,MatButtonModule,
+    LoginComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,0 +1,10 @@
+<div *ngIf="!user(); else loggendIn">
+    <h2>Iniciar Sesion con Google</h2>
+    <button (click)="login()" >Inciar Sesion</button>
+</div>
+
+<ng-template #loggendIn>
+    <h3>Hola, {{user()?.displayName}} </h3>
+    <button (click)="logout()">Cerrar Sesion</button>
+
+</ng-template>
